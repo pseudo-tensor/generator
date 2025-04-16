@@ -12,9 +12,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # Since 0.14.0 release of html-template chromium is needed for pdf generation.
 # More custom packages for specific template should not be added to this dockerfile. Instead, we should come up with some extensibility solution.
 # Installing latest released npm package
-RUN apk --update add git chromium && \
-    rm /var/cache/apk/* && \
-    npm install --ignore-scripts -g "@asyncapi/generator@${ASYNCAPI_GENERATOR_VERSION}"
+RUN apk --no-cache --update add git chromium \
+    && apk cache clean \
+    && npm install --ignore-scripts -g "@asyncapi/generator@${ASYNCAPI_GENERATOR_VERSION}"
 
 
 ENTRYPOINT [ "ag" ]
