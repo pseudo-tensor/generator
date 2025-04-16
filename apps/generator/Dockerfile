@@ -13,7 +13,6 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # More custom packages for specific template should not be added to this dockerfile. Instead, we should come up with some extensibility solution.
 # Installing latest released npm package
 RUN apk --no-cache --update add git chromium \
-    && apk cache clean \
     && npm install --ignore-scripts -g "@asyncapi/generator@${ASYNCAPI_GENERATOR_VERSION}"
 
 
